@@ -11,6 +11,8 @@ import com.example.ecommerce.repositories.ProductRepository;
 @Service
 public class ProductServiceManager implements ProductService {
 
+
+
     @Autowired
     private ProductRepository repository;
 
@@ -27,6 +29,16 @@ public class ProductServiceManager implements ProductService {
     @Override
     public Product save(Product product) {
         return this.repository.save(product);
+    }
+
+    @Override
+    public Product update(Long id, Product product) {
+        Product prod = this.repository.findById(id).get();
+
+        prod.setName(product.getName());
+        prod.setPrice(product.getPrice());
+
+        return this.repository.save(prod);
     }
 
 }

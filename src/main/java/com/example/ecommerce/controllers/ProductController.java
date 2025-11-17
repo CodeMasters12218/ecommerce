@@ -1,12 +1,16 @@
 ﻿package com.example.ecommerce.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,5 +41,23 @@ public class ProductController {
      @Transactional(readOnly = true)
      public Product getByIdProduct(@PathVariable Long id) {
          return this.serviceManager.findById(id);
+     }
+
+     @PutMapping("/{id}")
+     @Transactional
+     public ResponseEntity<?> update(@PathVariable Long id, 
+                                     @RequestBody Product product) {
+            Optional<Product> product1 = Optional.of(this.serviceManager.findById(id));
+
+            if (product1.isPresent()) {
+                Product newProduct = product1.get();
+                newProduct.setName(product.getName());
+                newProduct.setPrice(product.getPrice());
+
+                return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(this.serviceManager.update(id, newProduct));
+            }
+            return ResponseEntity.notFound().build();
      }
 }
