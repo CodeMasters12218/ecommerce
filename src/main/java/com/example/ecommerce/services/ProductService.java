@@ -9,4 +9,6 @@ public interface ProductService {
     Product findById(Long id);
     Product save(Product product);
     Product update(Long id, Product product);
+    boolean existsById(Long id);
+    void deleteById(Long id);
 }

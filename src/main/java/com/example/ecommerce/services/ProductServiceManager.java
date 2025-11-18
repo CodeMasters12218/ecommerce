@@ -41,4 +41,14 @@ public class ProductServiceManager implements ProductService {
         return this.repository.save(prod);
     }
 
+    @Override
+    public boolean existsById(Long id) {
+        return this.repository.existsById(id);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        this.repository.deleteById(id);
+    }
+
 }
