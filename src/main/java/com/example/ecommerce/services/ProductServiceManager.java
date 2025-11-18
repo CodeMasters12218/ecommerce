@@ -2,7 +2,6 @@
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.ecommerce.entities.Product;
@@ -11,10 +10,11 @@ import com.example.ecommerce.repositories.ProductRepository;
 @Service
 public class ProductServiceManager implements ProductService {
 
+    private final ProductRepository repository;
 
-
-    @Autowired
-    private ProductRepository repository;
+    public ProductServiceManager(ProductRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<Product> findAll() {
@@ -23,7 +23,8 @@ public class ProductServiceManager implements ProductService {
 
     @Override
     public Product findById(Long id) {
-        return this.repository.findById(id).get();
+        return this.repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
     }
 
     @Override
@@ -33,7 +34,8 @@ public class ProductServiceManager implements ProductService {
 
     @Override
     public Product update(Long id, Product product) {
-        Product prod = this.repository.findById(id).get();
+        Product prod = this.repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Producto no encontrado con id: " + id));
 
         prod.setName(product.getName());
         prod.setPrice(product.getPrice());
@@ -50,5 +52,4 @@ public class ProductServiceManager implements ProductService {
     public void deleteById(Long id) {
         this.repository.deleteById(id);
     }
-
 }
