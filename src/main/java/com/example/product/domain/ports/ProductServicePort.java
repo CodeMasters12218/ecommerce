@@ -1,14 +1,12 @@
-﻿package com.example.ecommerce.services;
+﻿package com.example.product.domain.ports;
 
+import com.example.product.domain.model.Product;
 import java.util.List;
 
-import com.example.ecommerce.entities.Product;
-
-public interface ProductService {
+public interface ProductServicePort {
     List<Product> findAll();
     Product findById(Long id);
     Product save(Product product);
     Product update(Long id, Product product);
-    boolean existsById(Long id);
     void deleteById(Long id);
 }

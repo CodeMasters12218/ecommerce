@@ -1,24 +1,24 @@
-﻿package com.example.ecommerce.services;
+﻿package com.example.product.application;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.ecommerce.entities.Product;
-import com.example.ecommerce.repositories.ProductRepository;
-
+import com.example.product.domain.model.Product;
+import com.example.product.domain.ports.ProductRepositoryPort;
+import com.example.product.domain.ports.ProductServicePort;
 @Service
-public class ProductServiceManager implements ProductService {
+public class ProductServiceManager implements ProductServicePort {
 
-    private final ProductRepository repository;
+    private final ProductRepositoryPort repository;
 
-    public ProductServiceManager(ProductRepository repository) {
+    public ProductServiceManager(ProductRepositoryPort repository) {
         this.repository = repository;
     }
 
     @Override
     public List<Product> findAll() {
-        return (List<Product>) this.repository.findAll();
+        return repository.findAll();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ProductServiceManager implements ProductService {
 
     @Override
     public Product save(Product product) {
-        return this.repository.save(product);
+        return repository.save(product);
     }
 
     @Override
@@ -40,16 +40,10 @@ public class ProductServiceManager implements ProductService {
         prod.setName(product.getName());
         prod.setPrice(product.getPrice());
 
-        return this.repository.save(prod);
+        return repository.save(prod);
     }
-
-    @Override
-    public boolean existsById(Long id) {
-        return this.repository.existsById(id);
-    }
-
     @Override
     public void deleteById(Long id) {
-        this.repository.deleteById(id);
+        repository.deleteById(id);
     }
 }
