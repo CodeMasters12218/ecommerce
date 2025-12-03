@@ -1,9 +1,14 @@
 ﻿package com.example.product.domain.model;
 
 import java.io.Serializable;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(description = "Event representation for product-related actions.")
 public class ProductEvent implements Serializable {
+    @Schema(description = "Unique identifier of the product", example = "300")
     private Long id;
+
+    @Schema(description = "Name of the product", example = "Gaming Keyboard")
     private String name;
 
     public ProductEvent() {}

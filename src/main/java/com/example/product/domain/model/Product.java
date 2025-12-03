@@ -1,8 +1,16 @@
 ﻿package com.example.product.domain.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(description = "Represents a product available in the catalog.")
 public class Product {
+    @Schema(description = "Unique identifier of the product", example = "300")
     private Long id;
+
+    @Schema(description = "Name of the product", example = "Gaming Keyboard")
     private String name;
+
+    @Schema(description = "Price of the product", example = "79.99")
     private Double price;
 
     public Product() {}
