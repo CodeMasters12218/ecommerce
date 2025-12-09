@@ -1,4 +1,4 @@
-﻿package com.example.product.infrastructure.messaging;
+package com.example.product.infrastructure.messaging;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;

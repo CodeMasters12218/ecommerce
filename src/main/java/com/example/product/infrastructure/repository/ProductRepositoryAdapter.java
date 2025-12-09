@@ -1,4 +1,4 @@
-﻿package com.example.product.infrastructure.repository;
+package com.example.product.infrastructure.repository;
 
 import com.example.product.domain.model.Product;
 import com.example.product.domain.ports.ProductRepositoryPort;

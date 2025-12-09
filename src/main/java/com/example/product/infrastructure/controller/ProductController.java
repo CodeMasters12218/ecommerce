@@ -1,4 +1,4 @@
-﻿package com.example.product.infrastructure.controller;
+package com.example.product.infrastructure.controller;
 
 import com.example.product.domain.model.Product;
 import com.example.product.domain.ports.ProductServicePort;

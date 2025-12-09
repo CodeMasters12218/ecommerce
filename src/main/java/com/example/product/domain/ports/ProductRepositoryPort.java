@@ -1,4 +1,4 @@
-﻿package com.example.product.domain.ports;
+package com.example.product.domain.ports;
 
 import com.example.product.domain.model.Product;
 import java.util.List;

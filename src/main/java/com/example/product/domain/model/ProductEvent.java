@@ -1,4 +1,4 @@
-﻿package com.example.product.domain.model;
+package com.example.product.domain.model;
 
 import java.io.Serializable;
 import io.swagger.v3.oas.annotations.media.Schema;
