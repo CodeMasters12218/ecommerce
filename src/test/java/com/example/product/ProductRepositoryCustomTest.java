@@ -1,4 +1,4 @@
-﻿package com.example.product;
+package com.example.product;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
