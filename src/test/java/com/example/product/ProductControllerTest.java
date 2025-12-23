@@ -1,7 +1,8 @@
-package com.example.product;
+﻿package com.example.product;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.*;
 
 import com.example.product.domain.model.Product;
 import com.example.product.domain.ports.ProductServicePort;
@@ -9,12 +10,11 @@ import com.example.product.infrastructure.controller.ProductController;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.test.context.bean.override.mockito.MockitoBean; 
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.Mockito.*;
 import java.util.Collections;
 
 @WebMvcTest(ProductController.class)
@@ -23,7 +23,7 @@ class ProductControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @MockitoBean
     private ProductServicePort productService;
 
     @Test
