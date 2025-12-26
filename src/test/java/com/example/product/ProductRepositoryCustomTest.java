@@ -20,8 +20,8 @@ class ProductRepositoryCustomTest {
 
     @Test
     void testFindByPriceLessThan() {
-        productRepository.save(new ProductEntity(null, "Mouse", 20.0));
-        productRepository.save(new ProductEntity(null, "Laptop", 1000.0));
+        productRepository.save(new ProductEntity(null, "Mouse", 20.0, 500));
+        productRepository.save(new ProductEntity(null, "Laptop", 1000.0, 50));
 
         List<ProductEntity> cheapProducts = productRepository.findByPriceLessThan(100.0);
 
@@ -31,8 +31,8 @@ class ProductRepositoryCustomTest {
 
     @Test
     void testBuscarPorRangoPrecio() {
-        productRepository.save(new ProductEntity(null, "Tablet", 300.0));
-        productRepository.save(new ProductEntity(null, "Monitor", 150.0));
+        productRepository.save(new ProductEntity(null, "Tablet", 300.0, 200));
+        productRepository.save(new ProductEntity(null, "Monitor", 150.0, 100));
 
         List<ProductEntity> productsInRange = productRepository.buscarPorRangoPrecio(100.0, 400.0);
 

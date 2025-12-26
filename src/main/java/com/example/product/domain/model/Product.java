@@ -1,4 +1,4 @@
-package com.example.product.domain.model;
+﻿package com.example.product.domain.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -13,16 +13,28 @@ public class Product {
     @Schema(description = "Price of the product", example = "79.99")
     private Double price;
 
+    @Schema(description = "Available stock of the product", example = "150")
+    private Integer stock;
+
     public Product() {}
 
-    public Product(Long id, String name, Double price) {
+    public Product(Long id, String name, Double price, Integer stock) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.stock = stock;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 
     public void setId(Long id) {
